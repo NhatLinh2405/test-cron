@@ -1,12 +1,12 @@
-import express, { Express, Request, Response } from "express";
-import { startCronJob } from "./cron";
+import express from "express";
+import { startCronJob } from "./cron.js";
 
-const app: Express = express();
+const app = express();
 const PORT = process.env.PORT || 8000;
 
 startCronJob();
 
-app.use("*", (req: Request, res: Response) => {
+app.use("*", (req, res) => {
 	res.status(200).send("Route not found");
 });
 
